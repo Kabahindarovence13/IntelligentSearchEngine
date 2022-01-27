@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "23dd4158-17bd-45f4-b91a-001d2b8fda50",
+		"name": "Cadise API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search route",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body has 'keywords' property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).hasOwnProperty(\"keywords\")",
+							"});",
+							"",
+							"pm.test(\"Keywords property is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(Array.isArray(jsonData.keywords))",
+							"});",
+							"",
+							"pm.test(\"Response body has 'results' property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).hasOwnProperty(\"results\")",
+							"});",
+							"",
+							"pm.test(\"Results property is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(Array.isArray(jsonData.results))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/search?q=law",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "law"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search route",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/search?q=law",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "law"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1417"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.2 Python/3.9.9"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jan 2022 07:50:24 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"keywords\": [\n        \"laws\",\n        \"legal\",\n        \"law\"\n    ],\n    \"results\": [\n        {\n            \"chapter\": \"Chapter 1\",\n            \"text\": \" The  people  shall  express  their  will  and  consent  on  who  shall govern them and how\\nthey should be governed, through regular, free and fair elections of their representatives or through referenda.\"\n        },\n        {\n            \"chapter\": \"Chapter 13\",\n            \"text\": \" The  people  shall  express  their  will  and  consent  on  who  shall govern them and how\\nthey should be governed, through regular, free and fair elections of their representatives or through referenda.\"\n        },\n        {\n            \"chapter\": \"Chapter 11\",\n            \"text\": \" The  people  shall  express  their  will  and  consent  on  who  shall govern them and how\\nthey should be governed, through regular, free and fair elections of their representatives or through referenda.\"\n        },\n        {\n            \"chapter\": \"Chapter 8\",\n            \"text\": \" The  people  shall  express  their  will  and  consent  on  who  shall govern them and how\\nthey should be governed, through regular, free and fair elections of their representatives or through referenda.\"\n        },\n        {\n            \"chapter\": \"Chapter 5\",\n            \"text\": \" The  people  shall  express  their  will  and  consent  on  who  shall govern them and how\\nthey should be governed, through regular, free and fair elections of their representatives or through referenda.\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
